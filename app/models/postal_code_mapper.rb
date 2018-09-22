@@ -1,0 +1,107 @@
+class PostalCodeMapper
+
+  def initialize(postal_code)
+    @postal_code = postal_code
+  end
+
+  def city_region
+    city_regions[@postal_code].andand.join("\n")
+  end
+
+
+  private
+
+  def city_regions
+    {
+      '80331' => ['Altstadt-Lehel'],
+      '80333' => ['Altstadt-Lehel', 'Maxvorstadt'],
+      '80335' => ['Altstadt-Lehel', 'Ludwigsvorstadt-Isarvorstadt', 'Maxvorstadt', 'Schwanthalerhöhe'],
+      '80336' => ['Altstadt-Lehel', 'Ludwigsvorstadt-Isarvorstadt', 'Sendling'],
+      '80337' => ['Ludwigsvorstadt-Isarvorstadt', 'Sendling'],
+      '80339' => ['Schwanthalerhöhe'],
+      '80469' => ['Altstadt-Lehel', 'Ludwigsvorstadt-Isarvorstadt', 'Sendling'],
+      '80538' => ['Altstadt-Lehel', 'Schwabing-Freimann'],
+      '80539' => ['Altstadt-Lehel', 'Maxvorstadt'],
+      '80634' => ['Neuhausen-Nymphenburg'],
+      '80636' => ['Maxvorstadt', 'Neuhausen-Nymphenburg'],
+      '80637' => ['Moosach', 'Neuhausen-Nymphenburg'],
+      '80638' => ['Moosach', 'Neuhausen-Nymphenburg'],
+      '80639' => ['Neuhausen-Nymphenburg'],
+      '80686' => ['Laim', 'Sendling-Westpark'],
+      '80687' => ['Laim', 'Pasing-Obermenzing'],
+      '80689' => ['Hadern', 'Laim', 'Pasing-Obermenzing'],
+      '80796' => ['Schwabing-West'],
+      '80797' => ['Maxvorstadt', 'Schwabing-West'],
+      '80798' => ['Maxvorstadt', 'Schwabing-West'],
+      '80799' => ['Maxvorstadt', 'Schwabing-West'],
+      '80801' => ['Maxvorstadt', 'Schwabing-Freimann', 'Schwabing-West'],
+      '80802' => ['Maxvorstadt', 'Schwabing-Freimann'],
+      '80803' => ['Schwabing-Freimann', 'Schwabing-West'],
+      '80804' => ['Schwabing-Freimann', 'Schwabing-West'],
+      '80805' => ['Schwabing-Freimann'],
+      '80807' => ['Milbertshofen-Am Hart', 'Schwabing-Freimann'],
+      '80809' => ['Milbertshofen-Am Hart', 'Schwabing-West'],
+      '80933' => ['Feldmoching-Hasenbergl'],
+      '80935' => ['Feldmoching-Hasenbergl'],
+      '80937' => ['Milbertshofen-Am Hart'],
+      '80939' => ['Milbertshofen-Am Hart', 'Schwabing-Freimann'],
+      '80992' => ['Moosach'],
+      '80993' => ['Moosach'],
+      '80995' => ['Allach-Untermenzing', 'Feldmoching-Hasenbergl'],
+      '80997' => ['Allach-Untermenzing', 'Moosach'],
+      '80999' => ['Allach-Untermenzing'],
+      '81241' => ['Pasing-Obermenzing'],
+      '81243' => ['Aubing-Lochhausen-Langwied', 'Pasing-Obermenzing'],
+      '81245' => ['Aubing-Lochhausen-Langwied', 'Pasing-Obermenzing'],
+      '81247' => ['Allach-Untermenzing', 'Pasing-Obermenzing'],
+      '81249' => ['Allach-Untermenzing', 'Aubing-Lochhausen-Langwied'],
+      '81369' => ['Sendling', 'Sendling-Westpark'],
+      '81371' => ['Sendling'],
+      '81373' => ['Sendling', 'Sendling-Westpark'],
+      '81375' => ['Hadern'],
+      '81377' => ['Hadern', 'Sendling-Westpark'],
+      '81379' => ['Sendling', 'Sendling-Westpark', 'Thalkirchen-Obersendling-Fürstenried-Forstenried-Solln'],
+      '81475' => ['Thalkirchen-Obersendling-Fürstenried-Forstenried-Solln'],
+      '81476' => ['Thalkirchen-Obersendling-Fürstenried-Forstenried-Solln'],
+      '81477' => ['Thalkirchen-Obersendling-Fürstenried-Forstenried-Solln'],
+      '81479' => ['Thalkirchen-Obersendling-Fürstenried-Forstenried-Solln'],
+      '81539' => ['Obergiesing', 'Ramersdorf-Perlach'],
+      '81541' => ['Au-Haidhausen', 'Obergiesing'],
+      '81543' => ['Au-Haidhausen', 'Untergiesing-Harlaching'],
+      '81545' => ['Trudering-Riem'],
+      '81547' => ['Obergiesing', 'Trudering-Riem'],
+      '81549' => ['Obergiesing, Ramersdorf-Perlach'],
+      '81667' => ['Au-Haidhausen'],
+      '81669' => ['Au-Haidhausen', 'Ramersdorf-Perlach', 'Au-Haidhausen'],
+      '81671' => ['Berg am Laim', 'Ramersdorf-Perlach'],
+      '81673' => ['Berg am Laim'],
+      '81675' => ['Au-Haidhausen, Bogenhausen'],
+      '81677' => ['Au-Haidhausen', 'Bogenhausen'],
+      '81679' => ['Bogenhausen'],
+      '81735' => ['Berg am Laim', 'Ramersdorf-Perlach, Trudering-Riem'],
+      '81737' => ['Ramersdorf-Perlach'],
+      '81739' => ['Ramersdorf-Perlach'],
+      '81825' => ['Berg am Laim', 'Trudering-Riem'],
+      '81827' => ['Trudering-Riem'],
+      '81829' => ['Trudering-Riem'],
+      '81925' => ['Bogenhausen'],
+      '81927' => ['Bogenhausen'],
+      '81929' => ['Bogenhausen'],
+      '86150' => ['Innenstadt'],
+      '86152' => ['Innenstadt'],
+      '86153' => ['Innenstadt'],
+      '86154' => ['Oberhausen'],
+      '86156' => ['Bärenkeller', 'Kriegshaber', 'Oberhausen', 'Pfersee'],
+      '86157' => ['Kriegshaber', 'Pfersee'],
+      '86159' => ['Antonsviertel', 'Hochfeld', 'Innenstadt', 'Universitätsviertel'],
+      '86161' => ['Hochfeld, Innenstadt', 'Spickel-Herrenbach', 'Universitätsviertel'],
+      '86163' => ['Hochzoll'],
+      '86165' => ['Lechhausen'],
+      '86167' => ['Lechhausen'],
+      '86169' => ['Firnhaberau, Hammerschmiede', 'Lechhausen'],
+      '86179' => ['Haunstetten-Siebenbrunn'],
+      '86199' => ['Bergheim, Göggingen', 'Haunstetten-Siebenbrunn', 'Inningen']
+    }
+  end
+
+end

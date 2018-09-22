@@ -1,0 +1,60 @@
+.layout.container
+  .layout__head
+    = form_tag immobiles_path, method: :get do
+      .form-group.col-xs-3.col-md-3
+        = label :immobile, :location, 'Stadtteil', class: 'control-label'
+        = select_tag 'immobile[location]', options_for_select(Immobile.locations, selected: params[:immobile].andand[:location]), class: 'form-control'
+      .form-group.col-xs-2.col-md-2
+        = label :immobile, :marketing_type, 'Mietobjekte', class: 'control-label'
+        = select_tag 'immobile[marketing_type]', options_for_select(Immobile.marketing_types, selected: params[:immobile].andand[:marketing_type]), class: 'form-control'
+      .form-group.col-xs-1.col-md-1
+        = label :immobile, :price_from, 'Preis ab', class: 'control-label'
+        = text_field :immobile, :price_from, value: params[:immobile].andand[:price_from], class: 'form-control'
+      .form-group.col-xs-1.col-md-1
+        = label :immobile, :price_to, 'Preis bis', class: 'control-label'
+        = text_field :immobile, :price_to, value: params[:immobile].andand[:price_to], class: 'form-control'
+      .form-group.col-xs-1.col-md-1
+        = label :immobile, :area_from, 'm² ab', class: 'control-label'
+        = text_field :immobile, :area_from, value: params[:immobile].andand[:area_from], class: 'form-control'
+      .form-group.col-xs-1.col-md-1
+        = label :immobile, :area_to, 'm² bis', class: 'control-label'
+        = text_field :immobile, :area_to, value: params[:immobile].andand[:area_to], class: 'form-control'
+      .form-group.col-xs-2.col-md-2
+        %br
+        = submit_tag 'Suchen', class: 'btn btn-block btn-primary'
+      .form-group.col-xs-1.col-md-1
+        %br
+        = link_to '✗', immobiles_path, class: 'btn btn-block btn-default'
+
+  .layout__main
+    - if @immobiles.present?
+      %table.table.table-bordered.table-responsive
+        %thead
+          %tr
+            %th Erstellt am
+            %th Link
+            %th Größe
+            %th Preis
+            %th m² Preis
+            %th Zimmer
+            %th Stadtteil
+            %th Kommentar
+            %th Status
+        %tbody
+          - @immobiles.each do |immobile|
+            %tr
+              %td= l(immobile.created_at.to_date)
+              %td= link_to immobile.immobile_identifier, immobile.link, target: '_blank'
+              %td= maybe_blank(immobile.area) { |area| "#{area} m²" }
+              %td= maybe_blank(immobile.price) { |price| number_to_currency(price, locale: :de) }
+              %td= maybe_blank(immobile.price_for_qm) { |price_for_qm| number_to_currency(price_for_qm, locale: :de) }
+              %td= maybe_blank immobile.rooms
+              %td= city_region immobile
+              %td
+                = text_field_tag(:comment, immobile.comment, class: 'form-control immobile-comment', data: {immobile_identifier: immobile.immobile_identifier}, placeholder: 'Kommentar...')
+              %td= state_label immobile
+
+      -if @immobiles.count == 100
+        %p Nicht alle Ergebnisse werden angezeigt. Wenden Sie ggf. mehr Filter an.
+    - else
+      %p Keine Ergebnisse gefunden.
