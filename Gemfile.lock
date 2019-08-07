@@ -58,7 +58,7 @@ GEM
       activesupport
       rack
     builder (3.2.2)
-    byebug (9.0.5)
+    byebug (11.0.1)
     capybara (2.8.0)
       addressable
       mime-types (>= 1.16)
@@ -233,6 +233,9 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    pry-byebug (3.7.0)
+      byebug (~> 11.0)
+      pry (~> 0.10)
     puma (3.12.1)
     query_diet (0.6.0)
     rack (1.6.11)
@@ -374,7 +377,6 @@ DEPENDENCIES
   binding_of_caller
   bootstrap-sass
   breach-mitigation-rails
-  byebug
   capybara
   capybara-screenshot
   coffee-rails
@@ -398,6 +400,7 @@ DEPENDENCIES
   modularity
   parallel_tests
   pg (~> 0.15)
+  pry-byebug
   puma
   query_diet
   rack-livereload

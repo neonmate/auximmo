@@ -2,7 +2,7 @@ require 'rest-client'
 
 class Immobile
 
-  ENDPOINT_URL = 'http://immobilien.augsburger-allgemeine.de/suchergebnisse.atom'
+  ENDPOINT_URL = 'https://immobilien.augsburger-allgemeine.de/suchergebnisse.atom'
 
   attr_accessor :location, :marketing_type, :price, :area, :link, :rooms, :created_at, :postal_code, :comment, :state, :immobile_identifier
 
@@ -24,8 +24,10 @@ class Immobile
 
   def self.where(options = {})
     begin
+      location = options[:location].presence || 'Augsburg'
       response = RestClient.get ENDPOINT_URL, params: {
-          l: options[:location].presence || 'Augsburg (Kreisfreie Stadt)',
+          l: location,
+          a: location_code(location),
           t: options[:marketing_type],
           pf: options[:price_from],
           pt: options[:price_to],
@@ -36,7 +38,7 @@ class Immobile
     rescue SocketError
       # Developing when offline should work
       immobile = new(
-          location: 'Augsburg (Kreisfreie Stadt)',
+          location: 'Augsburg',
           link: 'http://localhost:3000/685RJ4',
           marketing_type: 'rental',
           area: 56.3,
@@ -51,14 +53,14 @@ class Immobile
 
   def self.locations
     [
-      'Augsburg-Innenstadt (Stadtteil)',
-      'Augsburg (Kreisfreie Stadt)',
+      'Augsburg-Innenstadt',
+      'Augsburg',
       '86150 (PLZ)',
       '86152 (PLZ)',
       '86153 (PLZ)',
       '86159 (PLZ)',
       '86161 (PLZ)',
-      'München (Kreisfreie Stadt)',
+      'München',
       'München-Allach',
       'München-Altstadt',
       'München-Am Hart',
@@ -220,6 +222,10 @@ class Immobile
       'Renditeobjekte kaufen' => 'interest:sale',
       'Sonstige kaufen' => 'other_living:sale'
     }
+  end
+
+  def self.location_code(location)
+    location.gsub(' (PLZ)', '').gsub(' ', '-').downcase
   end
 
   private
