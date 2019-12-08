@@ -201,7 +201,25 @@ class Immobile
       '81829 (PLZ)',
       '81543 (PLZ)',
       '81545 (PLZ)',
-      '81547 (PLZ)'
+      '81547 (PLZ)',
+      'Kempten (Allgäu)',
+      'Kempten (Allgäu)-Adelharz',
+      'Kempten (Allgäu)-Auf dem Lindenberg',
+      'Kempten (Allgäu)-Breite',
+      'Kempten (Allgäu)-Bühl',
+      'Kempten (Allgäu)-Eich',
+      'Kempten (Allgäu)-Engelhalde',
+      'Kempten (Allgäu)-Franzosenbauer',
+      'Kempten (Allgäu)-Halde',
+      'Kempten (Allgäu)-Haslach',
+      'Kempten (Allgäu)-Haubenschloß',
+      'Kempten (Allgäu)-Haubensteig/Göhlenbach',
+      'Kempten (Allgäu)-Heiligkreuz',
+      'Kempten (Allgäu)-Hinterbach/Hirschdorf/Zollhaus',
+      'Kempten (Allgäu)-Innenstadt',
+      '87435 (PLZ)',
+      '87437 (PLZ)',
+      '87439 (PLZ)',
     ]
   end
 
