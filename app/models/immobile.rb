@@ -24,11 +24,12 @@ class Immobile
 
   def self.where(options = {})
     begin
-      location = options[:location].presence || 'Augsburg'
+      location = options[:location].presence || 'Augsburg-Innenstadt'
+      marketing_type = options[:marketing_type].presence || 'all:rental'
       response = RestClient.get ENDPOINT_URL, params: {
           l: location,
           a: location_code(location),
-          t: options[:marketing_type],
+          t: marketing_type,
           pf: options[:price_from],
           pt: options[:price_to],
           sf: options[:area_from],
