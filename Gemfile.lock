@@ -236,7 +236,7 @@ GEM
     pry-byebug (3.7.0)
       byebug (~> 11.0)
       pry (~> 0.10)
-    puma (3.12.1)
+    puma (3.12.4)
     query_diet (0.6.0)
     rack (1.6.11)
     rack-livereload (0.3.16)
